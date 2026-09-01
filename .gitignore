@@ -1,0 +1,6 @@
+# Pastas de configuração do editor de código
+.vscode/
+
+# Arquivos de sistema do Mac e Windows
+.DS_Store
+Thumbs.db
