@@ -1,0 +1,115 @@
+/* importando fonte estilo pixel art */ 
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/*  1 - configs gerais da page */ 
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffe6eb; /* Fundo rosinha claro da página inteira */
+    font-family: 'VT323', monospace; /* Aplicando a fonte pixel art */
+    height: 100vh; /* Ocupa 100% da altura da tela */
+    display: flex; /* Flexbox ajuda a centralizar coisas facilmente */
+    justify-content: center; /* Centraliza na horizontal */
+    align-items: center; /* Centraliza na vertical */
+    overflow: hidden; /* Evita que a tela crie barra de rolagem se o botão fugir muito longe */
+}
+
+/* 2. A "JANELINHA" */
+.window {
+    width: 320px;
+    background-color: #ffccd5;
+    border: 4px solid #e57373; /* Borda da janela */
+    border-radius: 12px; /* Arredondando os cantos */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15); /* Sombra para dar profundidade */
+    overflow: hidden;
+}
+
+/* 3. A BARRA DE TÍTULO */
+.title-bar {
+    background-color: #ffb3c1;
+    color: #c62828;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between; /* Coloca o título na esquerda e botões na direita */
+    align-items: center;
+    border-bottom: 4px solid #e57373;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* 4. OS BOTÕEZINHOS DA BARRA DE TÍTULO (- □ x) */
+.controls .win-btn {
+    background-color: white;
+    border: 2px solid #e57373;
+    color: #e57373;
+    width: 24px;
+    height: 24px;
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 4px;
+}
+
+/* 5. A ÁREA DO CONTEÚDO (Texto, Gatinho e Botões) */
+.content {
+    padding: 20px;
+    text-align: center;
+    /* Truque CSS para fazer o fundo xadrez rosinha */
+    background-color: #ffe6eb;
+    background-image: 
+      linear-gradient(45deg, #ffccd5 25%, transparent 25%, transparent 75%, #ffccd5 75%, #ffccd5), 
+      linear-gradient(45deg, #ffccd5 25%, transparent 25%, transparent 75%, #ffccd5 75%, #ffccd5);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+}
+
+.question {
+    font-size: 24px;
+    color: #880e4f;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.cat-image {
+    width: 140px;
+    margin-bottom: 20px;
+}
+
+/* 6. ÁREA DOS BOTÕES SIM E NÃO */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espaço entre o botão sim e não */
+    position: relative; /* Importante para o JS conseguir mover o botão 'não' depois */
+    height: 50px; /* Altura fixa para a caixa dos botões não encolher quando o 'não' fugir */
+}
+
+/* Estilo base para os dois botões */
+button {
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+    padding: 8px 20px;
+    background-color: white;
+    color: #c62828;
+    border: 3px solid #e57373;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.1s; /* Animaçãozinha rápida ao clicar */
+}
+
+/* Efeito quando clica no botão */
+button:active {
+    transform: scale(0.95);
+}
+
+/* Estilo especial para o botão SIM (pontilhado como na imagem) */
+#btn-yes {
+    border: 3px dashed #e57373;
+}
+
+/* Configuração inicial do botão NÃO para que o JS possa movê-lo */
+#btn-no {
+    position: relative; 
+}
