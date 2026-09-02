@@ -45,13 +45,19 @@ body {
     color: #e57373;
     width: 24px;
     height: 24px;
+    padding: 0; /* ⬅️ Isso tira o aspecto 'esticado' */
+    border-radius: 4px; /* Deixa os cantos só um pouquinho arredondados */
     font-family: 'VT323', monospace;
     font-size: 16px;
     cursor: pointer;
     margin-left: 4px;
+    /* As três linhas abaixo garantem que o -, o □ e o x fiquem bem no meio do botão */
+    display: inline-flex; 
+    justify-content: center;
+    align-items: center;
 }
 
-/* 5. A ÁREA DO CONTEÚDO (Texto, Gatinho e Botões) */
+/* 5. A ÁREA DO CONTEÚDO (Texto, Imagem e Botões) */
 .content {
     padding: 20px;
     text-align: center;
@@ -71,7 +77,7 @@ body {
     margin-bottom: 10px;
 }
 
-.cat-image {
+.cute-pic {
     width: 140px;
     margin-bottom: 20px;
 }

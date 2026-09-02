@@ -4,22 +4,36 @@ const btnNo = document.getElementById('btn-no');
 const btnYes = document.getElementById('btn-yes');
 const questionText = document.querySelector('.question');
 
+// variável de cronômetro - retorna à posição original 
+let resetTimer;
+
 // 2. A MÁGICA DA FUGA (Lógica do botão "NÃO")
 function moveButton() {
+     // Mudamos o tipo de posição do botão para 'fixed' (preso na tela)
+    btnNo.style.position = 'fixed';
     // Pegamos a largura e a altura da tela inteira do dispositivo
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
+    const safeWidth = window.innerWidth - btnNo.offsetWidth;
+    const safeHeight = window.innerHeight - btnNo.offsetHeight;
 
-    // Calculamos uma posição X (horizontal) e Y (vertical) aleatória.
-    // Subtraímos 100 pixels para garantir que o botão não fuja para fora da tela
-    const randomX = Math.floor(Math.random() * (windowWidth - 100)); 
-    const randomY = Math.floor(Math.random() * (windowHeight - 100));
+    // Sorteia uma posição X (horizontal) e Y (vertical) aleatória dentro da área segura.
+    const randomX = Math.floor(Math.random() * safeWidth); 
+    const randomY = Math.floor(Math.random() * safeHeight);
 
-    // Mudamos o tipo de posição do botão para 'absolute' (livre pela tela)
-    btnNo.style.position = 'absolute';
-    // Aplicamos as novas coordenadas geradas
+    // Movemos o botão
     btnNo.style.left = randomX + 'px';
     btnNo.style.top = randomY + 'px';
+
+    // 3. O RETORNO PARA CASA
+    // Primeiro, cancelamos o cronômetro anterior (caso a pessoa fique tentando clicar várias vezes)
+    clearTimeout(resetTimer);
+
+    // Criamos um novo cronômetro de 2 segundos (2000 milissegundos)
+    resetTimer = setTimeout(() => {
+        // Ao limpar os estilos, o CSS volta a assumir o controle e o botão volta para o lado do "SIM"
+        btnNo.style.position = '';
+        btnNo.style.left = '';
+        btnNo.style.top = '';
+    }, 2000);
 }
 
 // 3. OUVINDO OS EVENTOS
